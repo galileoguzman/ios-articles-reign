@@ -66,6 +66,14 @@ class ArticlesVC: UIViewController {
             self.refreshControl.endRefreshing()
         }
     }
+    
+    private func saveArticlesInMemory() {
+        UserDefaults.standard.setValue(articles, forKey: "articlesData")
+    }
+    
+    private func reachArticlesFromMemory() {
+        articles = UserDefaults.standard.object(forKey: "articlesData") as! [Article]
+    }
 }
 
 extension ArticlesVC:UITableViewDelegate, UITableViewDataSource {
